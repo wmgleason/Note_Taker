@@ -8,9 +8,13 @@ const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 
-// Adding below to allow the Express handle data parsing
+// Adding below to use the express-static middleware and allow the Express handle data parsing
 app.use(db.json());
 app.use(express.urlencoded({ extended: true }));
+
+// start having the server listen for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
