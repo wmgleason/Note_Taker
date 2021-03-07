@@ -1,14 +1,23 @@
 {
-  "name": "note-taker",
+  "name": "package.json",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "for Note Taker cli app",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "init-scripts-test"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "Note_Taker @wmgleason"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Note_Taker"
+  ],
+  "author": "W Gleason",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.3"
   }
 }
