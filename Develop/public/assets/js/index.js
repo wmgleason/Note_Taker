@@ -1,23 +1,15 @@
-let noteTitle;
-let noteText;
-let saveNoteBtn;
-let newNoteBtn;
-let noteList;
-// Must add this to allow app to connect using Express
-const PORT = process.env.PORT || 3000;
-const express = require("express");
-const app = express();
+var noteTitle;
+var noteText;
+var saveNoteBtn;
+var newNoteBtn;
+var noteList;
 
-// Adding below to use the express-static middleware and allow the Express handle data parsing
-app.use(express.json());
-app.use(express.static("public"))
-app.use(express.urlencoded({ extended: true }));
 
 // start having the server listen for requests
-app.listen(process.env.PORT || 3000, 
-	() => console.log("Server is running..."));
+// app.listen(process.env.PORT || 3000, 
+// 	() => console.log("Server is running..."));
 
-if (window.location.pathname === '/notes') {
+if (window.location.pathname === '/notes') {;
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -36,7 +28,7 @@ const hide = (elem) => {
 };
 
 // activeNote is used to keep track of the note in the textarea
-let activeNote = {};
+var activeNote = {};
 
 const getNotes = () =>
   fetch('/api/notes', {
@@ -129,12 +121,12 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
-  let jsonNotes = await notes.json();
+  var jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
 
-  let noteListItems = [];
+  var noteListItems = [];
 
   // Returns HTML element with or without a delete button
   const createLi = (text, delBtn = true) => {
