@@ -9,7 +9,8 @@ const express = require("express");
 const app = express();
 
 // Adding below to use the express-static middleware and allow the Express handle data parsing
-app.use(db.json());
+app.use(express.json());
+app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 
 // start having the server listen for requests
