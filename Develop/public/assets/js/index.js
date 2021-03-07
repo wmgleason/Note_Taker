@@ -4,7 +4,8 @@ var saveNoteBtn;
 var newNoteBtn;
 var noteList;
 
-
+// trying to solve the window undefined issue
+const url = window.location.origin;
 // start having the server listen for requests
 // app.listen(process.env.PORT || 3000, 
 // 	() => console.log("Server is running..."));
@@ -19,7 +20,7 @@ if (window.location.pathname === '/notes') {;
 
 // Show an element
 const show = (elem) => {
-  elem.style.display = 'inline';
+  elem.style.display = 'inline'; 
 };
 
 // Hide an element
