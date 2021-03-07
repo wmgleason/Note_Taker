@@ -1,0 +1,29 @@
+{
+  "name": "notetakerwg",
+  "version": "1.0.0",
+  "description": "for Note Taker cli app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmgleason/Note_Taker"
+  },
+  "engines": {
+    "node": "14.15.4"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Note_Taker"
+  ],
+  "author": "W Gleason",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
+
