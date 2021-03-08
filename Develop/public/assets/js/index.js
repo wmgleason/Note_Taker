@@ -128,57 +128,81 @@ const handleRenderSaveBtn = () => {
 };
 
 // Render the list of note titles
-const renderNoteList = async (notes) => {
-  var jsonNotes = await notes.json();
+var renderNoteList = function(notes) {
+  $noteList.empty();
+
   var noteListItems = [];
 
-    noteList.forEach((el) => (el.innerHTML = ''));
-  };
+  for (var i = 0; i < notes.length; i++) {
+    var note = notes[i];
 
+    var $li = $("<li class='list-group-item'>").data(note);
+    var $span = $("<span>").text(note.title);
+    var $delBtn = $(
+      "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+    );
+
+    $li.append($span, $delBtn);
+    noteListItems.push($li);
+  }
+
+  $noteList.append(noteListItems);
+};
 
 
   // Returns HTML element with or without a delete button
-  const createLi = (text, delBtn = true) => {
-    const liEl = document.createElement('li');
-    liEl.classList.add('list-group-item');
+  // const createLi = (text, delBtn = true) => {
+  //   const liEl = document.createElement('li');
+  //   liEl.classList.add('list-group-item');
 
-    const spanEl = document.createElement('span');
-    spanEl.innerText = text;
-    spanEl.addEventListener('click', handleNoteView);
+  //   const spanEl = document.createElement('span');
+  //   spanEl.innerText = text;
+  //   spanEl.addEventListener('click', handleNoteView);
 
-    liEl.append(spanEl);
+  //   liEl.append(spanEl);
 
-    if (delBtn) {
-      const delBtnEl = document.createElement('i');
-      delBtnEl.classList.add(
-        'fas',
-        'fa-trash-alt',
-        'float-right',
-        'text-danger',
-        'delete-note'
-      );
-      delBtnEl.addEventListener('click', handleNoteDelete);
+  //   if (delBtn) {
+  //     const delBtnEl = document.createElement('i');
+  //     delBtnEl.classList.add(
+  //       'fas',
+  //       'fa-trash-alt',
+  //       'float-right',
+  //       'text-danger',
+  //       'delete-note'
+  //     );
+  //     delBtnEl.addEventListener('click', handleNoteDelete);
 
-      liEl.append(delBtnEl);
-    }
+  //     liEl.append(delBtnEl);
+  //   }
 
-    return liEl;
+  //   return liEl;
+  // };
+
+  // if (jsonNotes.length === 0) {
+  //   noteListItems.push(createLi('No saved Notes', false));
+  // }
+
+  // jsonNotes.forEach((note) => {
+  //   const li = createLi(note.title);
+  //   li.dataset.note = JSON.stringify(note);
+
+  //   noteListItems.push(li);
+  // });
+
+
+  //   noteListItems.forEach((note) => noteList[0].append(note));
+  var getAndRenderNotes = function() {
+    return getNotes().then(function(data) {
+      renderNoteList(data);
+    });
   };
-
-  if (jsonNotes.length === 0) {
-    noteListItems.push(createLi('No saved Notes', false));
-  }
-
-  jsonNotes.forEach((note) => {
-    const li = createLi(note.title);
-    li.dataset.note = JSON.stringify(note);
-
-    noteListItems.push(li);
-  });
-
-
-    noteListItems.forEach((note) => noteList[0].append(note));
-
+  
+  $saveNoteBtn.on("click", handleNoteSave);
+  $noteList.on("click", ".list-group-item", handleNoteView);
+  $newNoteBtn.on("click", handleNewNoteView);
+  $noteList.on("click", ".delete-note", handleNoteDelete);
+  $noteTitle.on("keyup", handleRenderSaveBtn);
+  $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
