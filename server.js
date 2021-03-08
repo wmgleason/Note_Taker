@@ -1,6 +1,8 @@
 // server stuff originally in index.js
 // separating to better organize the code
-
+// trying something
+// const path = require("path");
+const path = require("path");
 // Require Express
 var express = require("express");
 
@@ -10,13 +12,12 @@ var app = express();
 // Set port.
 var PORT = process.env.PORT || 3000;
 
-// trying something
-// const path = require("path");
+
 
 // Set up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"))
+app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTES
 // Point the server to the route files.
@@ -26,5 +27,5 @@ require("./routes/htmlRoutes")(app);
 // LISTENER
 // Listen on port.
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+  console.log("Great - the server is running and listening on PORT: " + PORT);
 });
