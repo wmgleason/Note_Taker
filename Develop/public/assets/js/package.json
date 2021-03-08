@@ -13,7 +13,13 @@
     "url": "Note_Taker @wmglesaon"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "nodemon": "^2.0.7",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "14.15.4"
   },
   "keywords": [
     "Node",
