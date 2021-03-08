@@ -13,10 +13,12 @@
     "url": "Note_Taker @wmglesaon"
   },
   "dependencies": {
-    "express": "^4.16.3",
-    "nodemon": "^2.0.7",
+    "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "jquery": "^3.6.0",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "body-parser": "^1.19.0"
   },
   "engines": {
     "node": "14.15.4"

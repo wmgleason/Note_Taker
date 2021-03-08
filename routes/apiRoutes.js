@@ -27,9 +27,13 @@ const newNoteId = () => noteId++;
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-module.exports = (app) => {
+  module.exports = function (app) {
 
-  app.get('/api/notes', (req, res) => res.json(notesData));
+    app.get("/api/notes", (req, res) => {
+
+        let noteData = readData();
+        res.json(noteData)
+    })
 
 //   app.get('/api/waitlist', (req, res) => res.json(waitListData));
 
@@ -65,7 +69,7 @@ module.exports = (app) => {
     writeData(notesData);
     return res.json(notesData)
 })
-
+// deletes notes -
 app.delete('/api/notes/:id', (req, res) => {
   let notesData = readData();
   const noteId = req.params.id;
